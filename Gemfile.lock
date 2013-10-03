@@ -44,7 +44,6 @@ GEM
     debugger-ruby_core_source (1.2.3)
     erubis (2.7.0)
     execjs (2.0.2)
-    geocoder (1.1.8)
     hike (1.2.3)
     i18n (0.6.5)
     jquery-rails (3.0.4)
@@ -57,6 +56,7 @@ GEM
     mime-types (1.25)
     minitest (4.7.5)
     multi_json (1.8.0)
+    pg (0.16.0)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -115,8 +115,8 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   debugger
-  geocoder
   jquery-rails
+  pg
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)
   sdoc
