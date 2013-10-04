@@ -4,4 +4,7 @@ class Course < ActiveRecord::Base
 
   attr_writer :directions, :distance, :distance_value, :duration, :duration_value
   attr_reader :directions, :distance, :distance_value, :duration, :duration_value
+
+
+  default_scope order('name DESC')
 end

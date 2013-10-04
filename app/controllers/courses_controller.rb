@@ -5,18 +5,18 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Course.all
+
     if params[:from]
       @from = params[:from]
-      @pos  = Geocoder.coordinates("#{params[:from]}")
+
+
+      uri = URI.encode("http://maps.googleapis.com/maps/api/distancematrix/json?lang=sv_SE&mode=driving&language=se-SV&sensor=false&origins=#{@from}&destinations=#{destinations(@courses)}")
+      response = Net::HTTP.get_response(URI.parse(uri))
+      json = JSON.parse(response.body)
 
       courses = []
-      @courses.each do |course|
-
-        uri = URI.encode("http://maps.googleapis.com/maps/api/distancematrix/json?mode=driving&language=se-SV&sensor=false&origins=#{@from}&destinations=#{course.latitude},#{course.longitude}")
-        response = Net::HTTP.get_response(URI.parse(uri))
-
-        json = JSON.parse(response.body)
-        vars = json["rows"][0]["elements"][0]
+      @courses.each_with_index do |course, index|
+        vars = json["rows"][0]["elements"][index]
 
         if vars["duration"].blank?
           course.distance       = ""
@@ -37,6 +37,12 @@ class CoursesController < ApplicationController
     end
   end
 
-end
 
-#TODO.. just make 1 call to the api instead of 1 for each course..
+  private
+    def destinations(courses)
+      arr = []
+      courses.each{|c| arr << "#{c.latitude},#{c.longitude}" }
+      arr.join("|")
+    end
+
+end
