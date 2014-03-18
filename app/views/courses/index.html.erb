@@ -29,7 +29,7 @@
         <% end %>
         <h4><%= course.name %></h4>
         <small><%= course.address %></small>
-        <small><a href="#" class="pull-right">Visa vägbeskrivning</a></small>
+        <small><a href="<%= "https://www.google.com/maps/dir/#{@from}/#{course.address}"%>" target="_blank" class="pull-right">Visa vägbeskrivning</a></small>
       </li>
     <% end %>
   </ul>
