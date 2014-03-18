@@ -6,7 +6,7 @@
       <div class="form-group">
         <label class="control-label">Ange utgångspunkt för att få fram körtid samt vägbeskrivning.</label>
         <div class="input-group">
-          <%= text_field_tag :from, params[:from], class: 'form-control' %>
+          <%= text_field_tag :from, params[:from], class: 'form-control', placeholder: 't.ex: Odengatan 21, Stockholm' %>
           <span class="input-group-btn">
             <%= submit_tag "Kör!", class: 'btn btn-primary' %>
           </span>
@@ -14,23 +14,34 @@
       </div>
     <% end %>
 
+    <small>För medlemskap och mer information: <a href="http://www.smartgolfa.se">http://www.smartgolfa.se</a></small>
+
   </div>
 </div>
 
 <div class="container">
-  <ul class="list-group">
-    <% for course in @courses %>
-      <li class="list-group-item">
-        <% unless course.duration.nil? %>
-          <span class="label label-warning pull-right">
-            <%= course.distance %>
-          </span>
-          <span class="label label-info pull-right"><%= course.duration %></span>
-        <% end %>
-        <h4><%= course.name %></h4>
-        <small><%= course.address %></small>
-        <small><a href="<%= "https://www.google.com/maps/dir/#{@from}/#{course.address}"%>" target="_blank" class="pull-right">Visa vägbeskrivning</a></small>
-      </li>
-    <% end %>
-  </ul>
+  <% if @from %>
+    <h3>Från: <%=@from%></h3>
+    <ul class="list-group">
+      <% for course in @courses %>
+        <li class="list-group-item">
+          <% unless course.duration.nil? %>
+            <span class="label label-warning pull-right">
+              <%= course.distance %>
+            </span>
+            <span class="label label-info pull-right"><%= course.duration %></span>
+          <% end %>
+          <h4><%= course.name %></h4>
+          <small><%= course.address %></small>
+          <small><a href="<%= "https://www.google.com/maps/dir/#{@from}/#{course.address}"%>" target="_blank" class="pull-right">Visa vägbeskrivning</a></small>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<div class="container">
+  <div class="footer">
+    <small><strong>OBS.</strong> Denna sida är inte associerad med SmartGolfa AB. <br />De banor som är inlagda var de som var synbara <strong>2014-03-18</strong> på <a href="http://www.smartgolfa.se/category/anslutna-banor/">http://www.smartgolfa.se/category/anslutna-banor/</a>. <br />Hittar ni några felaktigheter får ni gärna höra av er till: <a href="mailto:kim@fransman.se">kim@fransman.se</a></small>
+  </div>
 </div>
