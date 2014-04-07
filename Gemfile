@@ -1,4 +1,4 @@
-ruby '2.0.0'
+ruby '2.1.0'
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -27,6 +27,8 @@ gem 'turbolinks'
 
 #gem 'geocoder'
 
+gem 'nokogiri'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -47,4 +49,4 @@ end
 # gem 'capistrano', group: :development
 
 # Use debugger
-gem 'debugger', group: [:development, :test]
+gem 'debugger', '1.6.6', group: [:development, :test]

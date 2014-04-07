@@ -21,7 +21,7 @@
 
 <div class="container">
   <% if @from %>
-    <h3>Från: <%=@from%></h3>
+    <h5>Från: <%=@from%></h5>
     <ul class="list-group">
       <% for course in @courses %>
         <li class="list-group-item">
@@ -31,9 +31,17 @@
             </span>
             <span class="label label-info pull-right"><%= course.duration %></span>
           <% end %>
-          <h4><%= course.name %></h4>
+          <h3><%= course.name %></h3>
           <small><%= course.address %></small>
-          <small><a href="<%= "https://www.google.com/maps/dir/#{@from}/#{course.address}"%>" target="_blank" class="pull-right">Visa vägbeskrivning</a></small>
+          <a href="<%= "https://www.google.com/maps/dir/#{@from}/#{course.address}"%>" target="_blank" class="pull-right btn btn-primary">Visa vägbeskrivning</a>
+
+          <% unless course.weather_table.nil? %>
+            <hr class="divider" />
+            <h4>Golfväder</h4>
+            <%= course.weather_table.html_safe %>
+            <hr />
+            <small>Data hämtat från: <strong>Golfväder.nu</strong>: <%= link_to course.weather_link, course.weather_link %></small>
+          <% end %>
         </li>
       <% end %>
     </ul>

@@ -18,3 +18,7 @@
   color: #777;
   text-align: center;
 }
+
+.list-group li{
+  margin-bottom: 25px;
+}
