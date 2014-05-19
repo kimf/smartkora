@@ -49,7 +49,7 @@ class CoursesController < ApplicationController
     end
 
     def get_weather_table(course)
-      Rails.cache.fetch("course_#{course.id}_weather_table_#{Time.now.hour}") do
+      Rails.cache.fetch("course_#{course.id}_weather_table_#{Time.now.strftime('%F %H:%m')}") do
         return nil if course.weather_link.empty?
 
         doc = Nokogiri::HTML(open(course.weather_link).read)
