@@ -37,7 +37,7 @@ class CoursesController < ApplicationController
       courses << course
     end
 
-    @courses = courses.sort_by{ |c| c.distance_value }
+    @courses = courses.sort_by{ |c| c.duration_value }
   end
 
 

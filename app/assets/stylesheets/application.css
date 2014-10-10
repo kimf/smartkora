@@ -22,3 +22,16 @@
 .list-group li{
   margin-bottom: 25px;
 }
+
+
+.unipeg{
+  background: url('/assets/unipeg.png') 10px 10px no-repeat;
+}
+
+.smartgolfa{
+  background: url('/assets/smartgolfa.png') 10px 10px no-repeat;
+}
+
+.both {
+  background: url('/assets/smartgolfa.png') 10px 10px no-repeat, url('/assets/unipeg.png') 80px 10px no-repeat;;
+}

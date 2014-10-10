@@ -1,4 +1,4 @@
-ruby '2.0.0'
+ruby '2.1.2'
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -49,4 +49,4 @@ end
 # gem 'capistrano', group: :development
 
 # Use debugger
-gem 'debugger', '1.6.6', group: [:development, :test]
+gem 'byebug', group: [:development, :test]

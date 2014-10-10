@@ -1,6 +1,6 @@
 <div class="jumbotron">
   <div class="container">
-    <h1>Körtid till alla Smartgolfa banor</h1>
+    <h1>Körtid till Smartgolfa & Unipeg banor</h1>
 
     <%= form_tag courses_path, :method => 'get' do %>
       <div class="form-group">
@@ -14,7 +14,7 @@
       </div>
     <% end %>
 
-    <small>För medlemskap och mer information: <a href="http://www.smartgolfa.se">http://www.smartgolfa.se</a></small>
+    <small>För medlemskap och mer information: <a href="http://www.smartgolfa.se">http://www.smartgolfa.se</a> &bull; <a href="http://www.unipeg.se/">http://www.unipeg.se/</a></small>
 
   </div>
 </div>
@@ -24,7 +24,7 @@
     <h5>Från: <%=@from%></h5>
     <ul class="list-group">
       <% for course in @courses %>
-        <li class="list-group-item">
+        <li class="list-group-item <%=course.provider%>">
           <% unless course.duration.nil? %>
             <span class="label label-warning pull-right">
               <%= course.distance %>
@@ -32,7 +32,7 @@
             <span class="label label-info pull-right"><%= course.duration %></span>
           <% end %>
           <h3><%= course.name %></h3>
-          <small><%= course.address %></small>
+
           <a href="<%= "https://www.google.com/maps/dir/#{@from}/#{course.address}"%>" target="_blank" class="pull-right btn btn-primary">Visa vägbeskrivning</a>
 
           <% unless course.weather_table.nil? %>
@@ -50,6 +50,6 @@
 
 <div class="container">
   <div class="footer">
-    <small><strong>OBS.</strong> Denna sida är inte associerad med SmartGolfa AB. <br />De banor som är inlagda var de som var synbara <strong>2014-03-18</strong> på <a href="http://www.smartgolfa.se/category/anslutna-banor/">http://www.smartgolfa.se/category/anslutna-banor/</a>. <br />Hittar ni några felaktigheter får ni gärna höra av er till: <a href="mailto:kim@fransman.se">kim@fransman.se</a></small>
+    <small><strong>OBS.</strong> Denna sida är inte associerad med SmartGolfa AB eller Uinpeg AB <br />De banor som är inlagda var de som var synbara <strong>2014-10-10</strong> på <a href="http://www.smartgolfa.se/anslutna-banor/">http://www.smartgolfa.se/anslutna-banor/</a> samt <a href="http://www.unipeg.se/vara-banor/">http://www.unipeg.se/vara-banor/</a>. <br />Hittar ni några felaktigheter får ni gärna höra av er till: <a href="mailto:kim@fransman.se">kim@fransman.se</a></small>
   </div>
 </div>
