@@ -25,13 +25,13 @@
 
 
 .unipeg{
-  background: url('/assets/unipeg.png') 10px 10px no-repeat;
+  background: url('/unipeg.png') 10px 10px no-repeat;
 }
 
 .smartgolfa{
-  background: url('/assets/smartgolfa.png') 10px 10px no-repeat;
+  background: url('/smartgolfa.png') 10px 10px no-repeat;
 }
 
 .both {
-  background: url('/assets/smartgolfa.png') 10px 10px no-repeat, url('/assets/unipeg.png') 80px 10px no-repeat;;
+  background: url('/smartgolfa.png') 10px 10px no-repeat, url('/unipeg.png') 80px 10px no-repeat;;
 }
