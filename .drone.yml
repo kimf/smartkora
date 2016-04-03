@@ -1,0 +1,33 @@
+build:
+  privileged: true
+  image: calces/drone-rails-postgres-redis-node-and-phantomjs
+  environment:
+    - RAILS_ENV=test
+  commands:
+    - . "$NVM_DIR/nvm.sh"
+    - cd /drone/src/client
+    - npm install
+    - cd /drone/src
+    - mkdir -p /drone/.bundle
+    - bundle config build.nokogiri --use-system-libraries
+    - bundle install --jobs 10 --retry 5
+    - cp config/database.drone.yml config/database.yml
+    - until pg_isready -h localhost -U postgres -q; do sleep 1; done
+    - psql -c 'create database test;' -U postgres -h 127.0.0.1
+    - export RAILS_ENV=test
+    - bundle exec rake db:schema:load
+    - bundle exec rake assets:precompile
+    - bundle exec rspec
+
+compose:
+  database:
+    image: postgres:9.5.1
+    environment:
+      - POSTGRES_USER=postgres
+  cache:
+    image: redis:3.0.7-alpine
+
+notify:
+  email:
+    recipients:
+      - kim.fransman@gmail.com
